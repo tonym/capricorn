@@ -1,7 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "og-mui": "apps/og-mui",
-    "og-mui-e2e": "apps/og-mui-e2e"
+    "og-mui": "apps/og-mui"
   }
 }
