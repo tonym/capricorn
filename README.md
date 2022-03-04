@@ -1,2 +1,0 @@
-# capricorn
-Monorepo test project
