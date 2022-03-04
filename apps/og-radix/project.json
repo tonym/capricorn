@@ -1,0 +1,70 @@
+{
+  "root": "apps/og-radix",
+  "sourceRoot": "apps/og-radix/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/og-radix",
+        "index": "apps/og-radix/src/index.html",
+        "baseHref": "/",
+        "main": "apps/og-radix/src/main.tsx",
+        "polyfills": "apps/og-radix/src/polyfills.ts",
+        "tsConfig": "apps/og-radix/tsconfig.app.json",
+        "assets": ["apps/og-radix/src/favicon.ico", "apps/og-radix/src/assets"],
+        "styles": ["apps/og-radix/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/og-radix/src/environments/environment.ts",
+              "with": "apps/og-radix/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "og-radix:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "og-radix:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/og-radix/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/og-radix"],
+      "options": {
+        "jestConfig": "apps/og-radix/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
