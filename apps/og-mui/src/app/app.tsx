@@ -1,4 +1,9 @@
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import {
+  createTheme,
+  ThemeOptions,
+  ThemeProvider,
+  styled,
+} from '@mui/material/styles';
 import {
   ButtonStyles,
   cssBaseline,
@@ -6,7 +11,13 @@ import {
 } from '@opensesame/gemini';
 import { AppBar, Button } from '@mui/material';
 
-const ogTheme = OgUseTheme() as any;
+interface AppTheme
+  extends Omit<ThemeOptions, 'breakpoints' | 'shadows' | 'spacing'> {
+  components?: Record<string, any>;
+  spacing?: any;
+}
+
+const ogTheme: AppTheme = OgUseTheme();
 
 const buttonStyles = ButtonStyles(OgUseTheme()) as any;
 
@@ -23,8 +34,9 @@ ogTheme.components = {
 };
 
 delete ogTheme.spacing;
-
 const theme = createTheme(ogTheme);
+
+console.log({ ogTheme });
 
 const AppBarPrimary = styled(AppBar)({
   padding: theme.spacing(3),
