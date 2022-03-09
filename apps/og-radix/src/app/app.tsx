@@ -1,7 +1,6 @@
 import React from 'react';
 import { cssBaseline, useTheme } from '@opensesame/gemini';
 import { styled, keyframes } from '@stitches/react';
-import { blackA } from '@radix-ui/colors';
 import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 
