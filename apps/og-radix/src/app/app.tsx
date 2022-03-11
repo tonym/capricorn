@@ -81,7 +81,6 @@ const Flex = styled('div', { display: 'flex' });
 
 const IconButton = styled('button', {
   all: 'unset',
-  fontFamily: theme.typography.variants.body1?.fontFamily,
   borderRadius: '100%',
   height: 35,
   width: 35,

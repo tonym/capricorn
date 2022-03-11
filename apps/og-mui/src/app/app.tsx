@@ -4,31 +4,14 @@ import {
   ThemeProvider,
   styled,
 } from '@mui/material/styles';
-import {
-  ButtonStyles,
-  cssBaseline,
-  useMuiTheme,
-  useTheme,
-} from '@opensesame/gemini';
+import { cssBaseline, useMuiTheme } from '@opensesame/gemini';
 import { AppBar, Button } from '@mui/material';
 
-const ogTheme = useMuiTheme() as ThemeOptions;
+const ogTheme = useMuiTheme() as ThemeOptions; // <-- Gemini function returns an OG type, MuiThemeOptions, that we cast to a MUI type
 
-const buttonStyles = ButtonStyles(useTheme()) as any;
+const theme = createTheme(ogTheme); // <-- MUI function to create a MUI theme
 
-delete buttonStyles.root.backgroundColor;
-delete buttonStyles.root.color;
-delete buttonStyles.root['&:hover'];
-
-ogTheme.components = {
-  MuiButton: {
-    styleOverrides: {
-      root: buttonStyles.root,
-    },
-  },
-};
-
-const theme = createTheme(ogTheme);
+cssBaseline(); // <-- Gemini baseline (MUI baseline is not used)
 
 const AppBarPrimary = styled(AppBar)({
   padding: theme.spacing(3),
@@ -39,8 +22,6 @@ const AppWrapper = styled('div')({
   paddingRight: theme.spacing(3),
   paddingTop: theme.spacing(10),
 });
-
-cssBaseline();
 
 function App() {
   return (
