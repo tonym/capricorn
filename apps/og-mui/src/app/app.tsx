@@ -1,11 +1,8 @@
-import {
-  createTheme,
-  ThemeOptions,
-  ThemeProvider,
-  styled,
-} from '@mui/material/styles';
-import { cssBaseline, useMuiTheme } from '@opensesame/gemini';
+import { createTheme, ThemeOptions, ThemeProvider, styled } from '@mui/material/styles';
+import { cssBaseline, provideTokens, useMuiTheme } from '@opensesame/gemini';
 import { AppBar, Button } from '@mui/material';
+
+provideTokens('simon');
 
 const ogTheme = useMuiTheme() as ThemeOptions; // <-- Gemini function returns an OG type, MuiThemeOptions, that we cast to a MUI type
 
@@ -14,13 +11,13 @@ const theme = createTheme(ogTheme); // <-- MUI function to create a MUI theme
 cssBaseline(); // <-- Gemini baseline (MUI baseline is not used)
 
 const AppBarPrimary = styled(AppBar)({
-  padding: theme.spacing(3),
+  padding: theme.spacing(3)
 });
 
 const AppWrapper = styled('div')({
   paddingLeft: theme.spacing(3),
   paddingRight: theme.spacing(3),
-  paddingTop: theme.spacing(10),
+  paddingTop: theme.spacing(10)
 });
 
 function App() {
